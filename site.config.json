@@ -1,0 +1,16 @@
+{
+  "name": "Narendra Sharma",
+  "role": "Apparel & Technical Designer",
+  "intro": "CLO 3D garments, brand identity & merchandise, and photoreal 3D product visualisation.",
+
+  "linkedin": "https://www.linkedin.com/in/REPLACE-WITH-YOUR-PROFILE",
+  "googleDrive": "https://drive.google.com/drive/folders/REPLACE-WITH-YOUR-FOLDER",
+  "googleDriveLabel": "Full-resolution files",
+  "cvLabel": "Download CV",
+
+  "sections": [
+    { "folder": "Clo", "title": "CLO 3D Apparel", "description": "Garments built, fitted and rendered in CLO 3D." },
+    { "folder": "Branding", "title": "Branding & Merchandise", "description": "Logos, apparel graphics and branded merchandise mockups." },
+    { "folder": "3D", "title": "3D Visualisation", "description": "Product and furniture renders." }
+  ]
+}

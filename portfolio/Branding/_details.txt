@@ -1,0 +1,10 @@
+# OPTIONAL: change titles, add captions, or set the order of images in this folder.
+#
+# One line per image:   file name | Title | Caption (caption is optional)
+# Images are shown in the order of the lines below. Images not listed here
+# appear after them, in alphabetical order, titled from their file name.
+# Lines starting with # are ignored, so remove the # to use a line.
+#
+# Examples:
+# loungeChair.png | Lounge Chair | Modelled and rendered in Blender
+# blueHoodie.png | Blue Hoodie | CLO 3D, cotton fleece
