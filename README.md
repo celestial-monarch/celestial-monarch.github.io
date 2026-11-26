@@ -58,22 +58,27 @@ Edit `site.config.json`. Links that still say `REPLACE` are hidden on the site u
 
 ## Publishing the changes
 
-### Option A: in the browser (nothing to install)
+### The easy way: double-click `publish.bat`
+1. Change files in this project's `portfolio/` folder (or `site.config.json`).
+   Note: `D:\Portfolio\Portfolio` is your archive and is **not** connected to the website.
+2. Double-click **`publish.bat`** in this project folder. It:
+   - checks every image and makes the web-optimized copies, stopping and naming the file
+     if one is damaged (nothing is uploaded in that case)
+   - lists what changed and saves it
+   - picks up anything you changed on the GitHub website, so the two never clash
+   - uploads it to GitHub
+3. Wait 1–2 minutes. The site updates by itself.
+
+Images are also optimized on GitHub when the site is built, so the website always gets
+the small web copies, never your original files.
+
+### From the GitHub website (when you're not at your PC)
 1. Open your repository on github.com and go into `portfolio/`, then the folder you want.
 2. **Add file → Upload files**, drag your images in, then press **Commit changes**.
    To remove one: open the file, click the **⋯** menu, choose **Delete file**.
 3. Wait 1–2 minutes. The site updates by itself (see the **Actions** tab for progress).
 
-Uploads through the browser are limited to 25 MB per file. Use Option B for bigger files.
-
-### Option B: from your PC
-After changing files in the `portfolio/` folder, run in this project folder:
-
-```
-git add -A
-git commit -m "Update portfolio"
-git push
-```
+Uploads through the browser are limited to 25 MB per file. Use `publish.bat` for bigger files.
 
 ### Preview on your PC before publishing (optional)
 Requires [Node.js](https://nodejs.org) (free). First time only: `npm install`. Then:

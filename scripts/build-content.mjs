@@ -35,6 +35,9 @@ const CONCURRENCY = 4;
 
 sharp.cache(false);
 
+// Images that could not be read (damaged, or not really an image). Reported at the end.
+const failures = [];
+
 // ---------- helpers ----------
 
 const slugify = (s) =>
@@ -153,15 +156,21 @@ async function buildSection(folderName, config, written) {
   });
 
   const slug = slugify(folderName);
-  const items = await runPool(files, async (fileName) => {
+  const results = await runPool(files, async (fileName) => {
     const info = details.get(fileName.toLowerCase());
-    const img = await processImage(path.join(folder, fileName), slug, written);
-    return {
-      title: info?.title || titleFromFilename(path.parse(fileName).name),
-      caption: info?.caption || '',
-      ...img,
-    };
+    try {
+      const img = await processImage(path.join(folder, fileName), slug, written);
+      return {
+        title: info?.title || titleFromFilename(path.parse(fileName).name),
+        caption: info?.caption || '',
+        ...img,
+      };
+    } catch (err) {
+      failures.push({ file: `${folderName}/${fileName}`, reason: err.message });
+      return null;
+    }
   });
+  const items = results.filter(Boolean);
 
   return {
     id: slug,
@@ -231,6 +240,13 @@ async function main() {
     if (section.items.length) sections.push(section);
     console.log(`  ${section.title.padEnd(28)} ${section.items.length} images`);
   }
+  if (failures.length) {
+    console.error('\n  These files could not be read as images (damaged, or not really an image):');
+    for (const f of failures) console.error(`    - portfolio/${f.file}`);
+    console.error('  Re-export them as JPG or PNG, or remove them, then try again.\n');
+    process.exit(1);
+  }
+
   const cv = await buildCv(written);
 
   const removed =
