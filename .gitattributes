@@ -1,0 +1,15 @@
+# Text files: consistent line endings
+* text=auto eol=lf
+
+# Never touch these: they are binary files (images, CV, fonts)
+*.pdf  binary
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.webp binary
+*.avif binary
+*.tif  binary
+*.tiff binary
+*.gif  binary
+*.woff binary
+*.woff2 binary
